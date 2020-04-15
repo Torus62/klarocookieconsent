@@ -1,0 +1,25 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+  enabled:
+    label: studiobosco.klarocookieconsent::lang.settings.enabled
+    type: switch
+    span: left
+  no_css:
+    label: studiobosco.klarocookieconsent::lang.settings.no_css
+    type: switch
+    span: right
+  consentconfig:
+    label: studiobosco.klarocookieconsent::lang.settings.consentconfig
+    type: codeeditor
+    size: giant
+    language: javascript
+    comment: studiobosco.klarocookieconsent::lang.settings.consentconfig_help
+    commentHtml: true
+  custom_css:
+    label: studiobosco.klarocookieconsent::lang.settings.custom_css
+    type: codeeditor
+    size: giant
+    language: css
