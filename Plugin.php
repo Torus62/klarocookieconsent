@@ -55,7 +55,7 @@ class Plugin extends PluginBase
         $pluginUrl = url('/plugins/studiobosco/klarocookieconsent');
 
         Block::append('scripts', '<script type="text/javascript">' . $consentConfig . '</script>');
-        Block::append('scripts', '<script type="text/javascript" src="' . $pluginUrl . '/assets/klaro-no-css.js" />');
+        Block::append('scripts', '<script type="text/javascript" src="' . $pluginUrl . '/assets/klaro-no-css.js"></script>');
 
         if (!$noCss) {
             Block::append('styles', '<link rel="stylesheet" type="text/css" href="' . $pluginUrl . '/assets/klaro.css" />');
