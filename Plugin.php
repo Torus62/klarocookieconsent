@@ -44,7 +44,7 @@ class Plugin extends PluginBase
     public function boot()
     {
         $enabled = boolval(intval(Settings::get('enabled', 0)));
-        $noCss = boolval(intval(Settings::get('noCss', 0)));
+        $noCss = boolval(intval(Settings::get('no_css', 0)));
         $customCss = Settings::get('custom_css');
         $consentConfig = Settings::get('consentconfig', Settings::getDefaultConsentConfig());
 
