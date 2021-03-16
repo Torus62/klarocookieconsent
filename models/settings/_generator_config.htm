@@ -31,16 +31,16 @@
     <?= $model->generator_lang; ?>: {
       privacyPolicyUrl: '<?= trim($model->generator_privacy_policy_url ?? ''); ?>',
       consentNotice: {
-        description: '<?= trim($model->generator_consent_notice_description ?? ''); ?>',
+        description: <?= json_encode($model->generator_consent_notice_description ?? ''); ?>,
       },
       consentModal: {
-        description: '<?= trim($model->generator_consent_modal_description ?? ''); ?>'
+        description: <?= json_encode($model->generator_consent_modal_description ?? ''); ?>
       },
       
       purposes: {
 <?php foreach ($model->generator_purposes ?? [] as $purpose) : ?><?php if (array_get($purpose, 'is_active')) : ?>
         <?= array_get($purpose, 'name'); ?>: {
-          title: '<?= array_get($purpose, 'title'); ?>'
+          title: <?= json_encode(array_get($purpose, 'title', '')); ?>
         },
 <?php endif; ?><?php endforeach; ?>
       }
@@ -53,8 +53,8 @@
       default: <?= array_get($service, 'default') ? 'true' : 'false'; ?>,
       translations: {
         <?= $model->generator_lang; ?>: {
-          title: '<?= array_get($service, 'title'); ?>',
-          description: '<?= trim(array_get($service, 'description', '')); ?>'
+          title: <?= json_encode(array_get($service, 'title')); ?>,
+          description: <?= json_encode(array_get($service, 'description', '')); ?>
         }
       },
       purposes: <?= json_encode(array_get($service, 'purposes', 'null')); ?>,
