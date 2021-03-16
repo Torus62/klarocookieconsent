@@ -17,6 +17,7 @@
         'generator_cookie_domain' => 'Cookie-Domain',
         'generator_cookie_domain_help' => 'Keep empty to make klaro use the current domain.',
         'generator_cookie_expires_after_days' => 'Cookie expiration in days',
+        'generator_lang' => 'Language code',
         'generator_default' => 'Services are enabled by default',
         'generator_must_consent' => 'User must give consent',
         'generator_must_consent_help' => 'Will directly display the consent modal and not allow the user to close it before having actively consented or declined the use of third-party services.',

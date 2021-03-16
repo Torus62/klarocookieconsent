@@ -28,7 +28,7 @@
   hideDeclineAll: <?= $model->generator_hide_decline_all ? 'true' : 'false'; ?>,
   hideLearnMore: <?= $model->generator_hide_learn_more ? 'true' : 'false'; ?>,
   translations: {
-    zz: {
+    <?= $model->generator_lang; ?>: {
       privacyPolicyUrl: '<?= trim($model->generator_privacy_policy_url ?? ''); ?>',
       consentNotice: {
         description: '<?= trim($model->generator_consent_notice_description ?? ''); ?>',
@@ -52,7 +52,7 @@
       name: '<?= array_get($service, 'name'); ?>',
       default: <?= array_get($service, 'default') ? 'true' : 'false'; ?>,
       translations: {
-        zz: {
+        <?= $model->generator_lang; ?>: {
           title: '<?= array_get($service, 'title'); ?>',
           description: '<?= trim(array_get($service, 'description', '')); ?>'
         }

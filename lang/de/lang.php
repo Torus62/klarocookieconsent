@@ -17,6 +17,7 @@
         'generator_cookie_domain' => 'Cookie-Domain',
         'generator_cookie_domain_help' => 'Leer lassen, um für Klaro Cookie aktuelle Domain zu nutzen.',
         'generator_cookie_expires_after_days' => 'Ablaufzeit des Klaro Cookies in Tagen',
+        'generator_lang' => 'Sprache (Kürzel)',
         'generator_default' => 'Dienste sind standardmäßig angeschalten',
         'generator_must_consent' => 'Dienste müssen bestätigt werden',
         'generator_must_consent_help' => 'Falls aktiviert, müssen die Dienste über den Klaro Dialog bestätigt werden, bevor die Webseite genutzt werden kann.',

@@ -44,6 +44,11 @@ tabs:
       span: right
       tab: studiobosco.klarocookieconsent::lang.settings.tab_generator
 
+    generator_lang:
+      label: studiobosco.klarocookieconsent::lang.settings.generator_lang
+      default: en
+      tab: studiobosco.klarocookieconsent::lang.settings.tab_generator
+
     generator_default:
       label: studiobosco.klarocookieconsent::lang.settings.generator_default
       type: switch
@@ -193,6 +198,7 @@ tabs:
       dependsOn:
         - generator_cookie_domain
         - generator_cookie_expires_after_days
+        - generator_lang
         - generator_default
         - generator_must_consent
         - generator_accept_all
