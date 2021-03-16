@@ -2,3 +2,4 @@
 1.1.0: Adds config generator
 1.1.1: bugfixes
 1.1.2: fixed bugs in config template
+1.1.3: fixes syntax error in default config

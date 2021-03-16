@@ -102,7 +102,7 @@ var klaroConfig = {
         zz: {
             privacyPolicyUrl: '/privacy',
 
-        }
+        },
         de: {
             /*
             You can specify a language-specific link to your privacy policy here.
