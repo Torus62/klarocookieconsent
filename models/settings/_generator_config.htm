@@ -63,9 +63,9 @@
         [<?= array_get($cookie, 'name'); ?>, '<?= array_get($cookie, 'path', '/'); ?>', '<?= array_get($cookie, 'domain'); ?>'],
 <?php endforeach; ?>
       ],
-<?php if (array_get($cookie, 'callback')) : ?>
+<?php if (trim(array_get($cookie, 'callback', ''))) : ?>
       callback: function (consent, service) {
-        <?= $cookie['callback']; ?>
+        <?= array_get($cookie, 'callback'); ?>
       },
 <?php endif; ?>
       required: <?= array_get($cookie, 'required') ? 'true' : 'false'; ?>,
