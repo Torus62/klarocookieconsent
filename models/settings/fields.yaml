@@ -82,15 +82,11 @@ tabs:
     
     generator_consent_notice_description:
       label: studiobosco.klarocookieconsent::lang.settings.generator_consent_notice_description
-      type: textarea
-      size: tiny
       span: left
       tab: studiobosco.klarocookieconsent::lang.settings.tab_generator
 
     generator_consent_modal_description:
       label: studiobosco.klarocookieconsent::lang.settings.generator_consent_modal_description
-      type: textarea
-      size: tiny
       span: right
       tab: studiobosco.klarocookieconsent::lang.settings.tab_generator
 
@@ -137,9 +133,6 @@ tabs:
             required: true
           description:
             label: studiobosco.klarocookieconsent::lang.settings.generator_service_description
-            type: richeditor
-            toolbarButtons: insertLink|clearFormatting|html
-            size: tiny
             span: left
           purposes:
             label: studiobosco.klarocookieconsent::lang.settings.generator_service_purposes

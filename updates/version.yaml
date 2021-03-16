@@ -3,3 +3,4 @@
 1.1.1: bugfixes
 1.1.2: fixed bugs in config template
 1.1.3: fixes syntax error in default config
+1.1.4: uses single line text fields for descriptions in generator
