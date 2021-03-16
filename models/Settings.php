@@ -19,6 +19,11 @@ class Settings extends Model
 
     protected $cache = [];
 
+    public $jsonable = [
+        'generator_purposes',        
+        'generator_services',
+    ];
+
     public function __construct(array $data = [])
     {
         parent::__construct($data);
@@ -33,5 +38,15 @@ class Settings extends Model
     {
         $config = file_get_contents(__DIR__ . '/../assets/config.default.js');
         return $config;
+    }
+
+    public function getPurposesOptions()
+    {
+        $options = [];
+        $purposes = array_get(post('Settings'), 'generator_purposes', $this->generator_purposes ?? []);
+        foreach ($purposes as $purpose) {
+            $options[$purpose['name']] = $purpose['title'];
+        }
+        return $options;
     }
 }

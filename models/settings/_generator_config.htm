@@ -1,0 +1,80 @@
+<script type="text/javascript">
+  function applyKlaroConfig(source, target) {
+    const config = document.querySelector(source).innerHTML;
+    document.querySelector(target).value = config;
+    $(document.querySelector(target)).trigger('change');
+  }
+</script>
+<div class="form-group">
+  <button 
+    onclick="applyKlaroConfig('#klaro-generated-config', '#CodeEditor-formConsentconfig-textarea-consentconfig');return false;" 
+    class="btn btn-primary"
+  >
+    <?= Lang::get('studiobosco.klarocookieconsent::lang.settings.generator_apply_config'); ?>
+  </button>
+  <br/><br/>
+  <div class="field-codeeditor">
+<pre><code id="klaro-generated-config">var klaroConfig = {
+  testing: false,
+  elementID: 'klaro',
+  storageMethod: 'cookie',
+  storageName: 'klaro',
+  htmlTexts: true,
+  cookieDomain: '<?= $model->generator_cookie_domain; ?>',
+  cookieExpiresAfterDays: <?= $model->generator_cookie_expires_after_days; ?>,
+  default: <?= $model->generator_default ? 'true' : 'false'; ?>,
+  mustConsent: <?= $model->generator_must_consent ? 'true' : 'false'; ?>,
+  acceptAll: <?= $model->generator_accept_all ? 'true' : 'false'; ?>,
+  hideDeclineAll: <?= $model->generator_hide_decline_all ? 'true' : 'false'; ?>,
+  hideLearnMore: <?= $model->generator_hide_learn_more ? 'true' : 'false'; ?>,
+  translations: {
+    zz: {
+      privacyPolicyUrl: '<?= trim($model->generator_privacy_policy_url ?? ''); ?>',
+      consentNotice: {
+        description: '<?= trim($model->generator_consent_notice_description ?? ''); ?>',
+      },
+      consentModal: {
+        description: '<?= trim($model->generator_consent_modal_description ?? ''); ?>'
+      },
+      
+      purposes: {
+<?php foreach ($model->generator_purposes ?? [] as $purpose) : ?><?php if (array_get($purpose, 'is_active')) : ?>
+        <?= array_get($purpose, 'name'); ?>: {
+          title: '<?= array_get($purpose, 'title'); ?>'
+        },
+<?php endif; ?><?php endforeach; ?>
+      }
+    }
+  },
+  services: [
+<?php foreach ($model->generator_services ?? [] as $service) : ?><?php if (array_get($service, 'is_active')) : ?>
+    {
+      name: '<?= array_get($service, 'name'); ?>',
+      default: <?= array_get($service, 'default') ? 'true' : 'false'; ?>,
+      translations: {
+        zz: {
+          title: '<?= array_get($service, 'title'); ?>',
+          description: '<?= trim(array_get($service, 'description', '')); ?>'
+        }
+      },
+      purposes: <?= json_encode(array_get($service, 'purposes', 'null')); ?>,
+      cookies: [
+<?php foreach (array_get($service, 'cookies', []) as $cookie) : ?>
+        [<?= array_get($cookie, 'name'); ?>, '<?= array_get($cookie, 'path', '/'); ?>', '<?= array_get($cookie, 'domain'); ?>'],
+<?php endforeach; ?>
+      ],
+<?php if (array_get($cookie, 'callback')) : ?>
+      callback: function (consent, service) {
+        <?= $cookie['callback']; ?>
+      },
+<?php endif; ?>
+      required: <?= array_get($cookie, 'required') ? 'true' : 'false'; ?>,
+      optOut: <?= array_get($cookie, 'opt_out') ? 'true' : 'false'; ?>,
+      onlyOnce: <?= array_get($cookie, 'only_once') ? 'true' : 'false'; ?>,
+    },
+<?php endif; ?><?php endforeach; ?>
+  ]
+};
+</code></pre>
+  </div>
+</div>

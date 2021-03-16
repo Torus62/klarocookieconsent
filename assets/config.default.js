@@ -1,301 +1,295 @@
-// By default, Klaro will load the config from  a global "klaroConfig" variable.
-// You can change this by specifying the "data-config" attribute on your
-// script take, e.g. like this:
-// <script src="klaro.js" data-config="myConfigVariableName" />
-// You can also disable auto-loading of the consent notice by adding
-// data-no-auto-load=true to the script tag.
+/*
+By default, Klaro will load the config from a global 'klaroConfig' variable. You
+can change this by specifying the 'data-klaro-config' attribute on your script:
+<script src="klaro.js" data-klaro-config="myConfigVariableName"
+*/
 var klaroConfig = {
-    // You can customize the ID of the DIV element that Klaro will create
-    // when starting up. If undefined, Klaro will use 'klaro'.
+    /*
+    Setting 'testing' to 'true' will cause Klaro to not show the consent notice or
+    modal by default, except if a special hash tag is appended to the URL (#klaro-
+    testing). This makes it possible to test Klaro on your live website without
+    affecting normal visitors.
+    */
+    testing: false,
+
+    /*
+    You can customize the ID of the DIV element that Klaro will create when starting
+    up. By default, Klaro will use 'klaro'.
+    */
     elementID: 'klaro',
 
-    // How Klaro should store the user's preferences. It can be either 'cookie'
-    // (the default) or 'localStorage'.
+    /*
+    You can customize how Klaro persists consent information in the browser. Specify
+    either cookie' (the default) or 'localStorage'.
+    */
     storageMethod: 'cookie',
 
-    // You can customize the name of the cookie that Klaro uses for storing
-    // user consent decisions. If undefined, Klaro will use 'klaro'.
-    cookieName: 'klaro',
+    /*
+    You can customize the name of the cookie or localStorage entry that Klaro will
+    use for storing the consent information. By default, Klaro will use 'klaro'.
+    */
+    storageName: 'klaro',
 
-    // You can also set a custom expiration time for the Klaro cookie.
-    // By default, it will expire after 120 days.
-    cookieExpiresAfterDays: 365,
+    /*
+    If set to `true`, Klaro will render the texts given in the
+    `consentModal.description` and `consentNotice.description` translations as HTML.
+    This enables you to e.g. add custom links or interactive content.
+    */
+    htmlTexts: false,
 
-    // You can change to cookie domain for the consent manager itself.
-    // Use this if you want to get consent once for multiple matching domains.
-    // If undefined, Klaro will use the current domain.
-    //cookieDomain: '.github.com',
+    /*
+    You can change the cookie domain for the consent manager itself. Use this if you
+    want to get consent once for multiple matching domains. By default, Klaro will
+    use the current domain. Only relevant if 'storageMethod' is set to 'cookie'.
+    */
+    cookieDomain: '.example.com',
 
-    // Put a link to your privacy policy here (relative or absolute).
-    privacyPolicy: '/#privacy',
+    /*
+    You can also set a custom expiration time for the Klaro cookie. By default, it
+    will expire after 30 days. Only relevant if 'storageMethod' is set to 'cookie'.
+    */
+    cookieExpiresAfterDays: 30,
 
-    // Defines the default state for applications (true=enabled by default).
+    /*
+    Defines the default state for services in the consent modal (true=enabled by
+    default). You can override this setting in each service.
+    */
     default: false,
 
-    // If "mustConsent" is set to true, Klaro will directly display the consent
-    // manager modal and not allow the user to close it before having actively
-    // consented or declines the use of third-party apps.
+    /*
+    If 'mustConsent' is set to 'true', Klaro will directly display the consent
+    manager modal and not allow the user to close it before having actively
+    consented or declined the use of third-party services.
+    */
     mustConsent: false,
 
-    // Show "accept all" to accept all apps instead of "ok" that only accepts
-    // required and "default: true" apps
-    acceptAll: false,
+    /*
+    Setting 'acceptAll' to 'true' will show an "accept all" button in the notice and
+    modal, which will enable all third-party services if the user clicks on it. If
+    set to 'false', there will be an "accept" button that will only enable the
+    services that are enabled in the consent modal.
+    */
+    acceptAll: true,
 
-    // replace "decline" with cookie manager modal
+    /*
+    Setting 'hideDeclineAll' to 'true' will hide the "decline" button in the consent
+    modal and force the user to open the modal in order to change his/her consent or
+    disable all third-party services. We strongly advise you to not use this
+    feature, as it opposes the "privacy by default" and "privacy by design"
+    principles of the GDPR (but might be acceptable in other legislations such as
+    under the CCPA)
+    */
     hideDeclineAll: false,
 
-    // You can define the UI language directly here. If undefined, Klaro will
-    // use the value given in the global "lang" variable. If that does
-    // not exist, it will use the value given in the "lang" attribute of your
-    // HTML tag. If that also doesn't exist, it will use 'en'.
-    //lang: 'en',
+    /*
+    Setting 'hideLearnMore' to 'true' will hide the "learn more / customize" link in
+    the consent notice. We strongly advise against using this under most
+    circumstances, as it keeps the user from customizing his/her consent choices.
+    */
+    hideLearnMore: false,
 
-    // You can overwrite existing translations and add translations for your
-    // app descriptions and purposes. See `src/translations/` for a full
-    // list of translations that can be overwritten:
-    // https://github.com/KIProtect/klaro/tree/master/src/translations
-
-    // Example config that shows how to overwrite translations:
-    // https://github.com/KIProtect/klaro/blob/master/src/configs/i18n.js
+    /*
+    You can overwrite existing translations and add translations for your service
+    descriptions and purposes. See `src/translations/` for a full list of
+    translations that can be overwritten:
+    https://github.com/KIProtect/klaro/tree/master/src/translations
+    */
     translations: {
-        // If you erase the "consentModal" translations, Klaro will use the
-        // bundled translations.
+        /*
+        The `zz` key contains default translations that will be used as fallback values.
+            This can e.g. be useful for defining a fallback privacy policy URL.
+        */
+        zz: {
+            privacyPolicyUrl: '/privacy',
+
+        }
         de: {
+            /*
+            You can specify a language-specific link to your privacy policy here.
+            */
+            privacyPolicyUrl: '/datenschutz',
+            consentNotice: {
+                description: 'Dieser Text wird in der Einwilligungsbox erscheinen.',
+            },
             consentModal: {
                 description:
-                    'Hier können Sie einsehen und anpassen, welche Information wir über Sie sammeln. Einträge die als "Beispiel" gekennzeichnet sind dienen lediglich zu Demonstrationszwecken und werden nicht wirklich verwendet.',
+                    'Hier können Sie einsehen und anpassen, welche Information wir über Sie ' + 
+                    'sammeln. Einträge die als "Beispiel" gekennzeichnet sind dienen lediglich ' + 
+                    'zu Demonstrationszwecken und werden nicht wirklich verwendet.',
             },
-            inlineTracker: {
-                description: 'Beispiel für ein Inline-Tracking Skript',
-            },
-            externalTracker: {
-                description: 'Beispiel für ein externes Tracking Skript',
-            },
-            adsense: {
-                description: 'Anzeigen von Werbeanzeigen (Beispiel)',
-            },
-            matomo: {
-                description: 'Sammeln von Besucherstatistiken',
-            },
-            camera: {
-                description:
-                    'Eine Überwachungskamera (nur ein Beispiel zu IMG-Tags)',
-            },
-            cloudflare: {
-                description: 'Schutz gegen DDoS-Angriffe',
-            },
-            intercom: {
-                description:
-                    'Chat Widget & Sammeln von Besucherstatistiken (nur ein Beispiel)',
-            },
-            mouseflow: {
-                description: 'Echtzeit-Benutzeranalyse (nur ein Beispiel)',
-            },
-            googleFonts: {
-                description: 'Web-Schriftarten von Google gehostet',
-            },
+            /*
+            You should also define translations for every purpose you define in the
+            'services' section. You can define a title and an (optional) description.
+            */
             purposes: {
-                analytics: 'Besucher-Statistiken',
-                security: 'Sicherheit',
-                livechat: 'Live Chat',
-                advertising: 'Anzeigen von Werbung',
-                styling: 'Styling',
+                analytics: {
+                    title: 'Besucher-Statistiken'
+                },
+                security: {
+                    title: 'Sicherheit'
+                },
+                livechat: {
+                    title: 'Live Chat'
+                },
+                advertising: {
+                    title: 'Anzeigen von Werbung'
+                },
+                styling: {
+                    title: 'Styling'
+                },
             },
-            acceptSelected: 'Auswahl übernehemen'
         },
         en: {
+            privacyPolicyUrl: '/privacy',
             consentModal: {
                 description:
-                    'Here you can see and customize the information that we collect about you. Entries marked as "Example" are just for demonstration purposes and are not really used on this website.',
-            },
-            inlineTracker: {
-                description: 'Example of an inline tracking script',
-            },
-            externalTracker: {
-                description: 'Example of an external tracking script',
-            },
-            adsense: {
-                description: 'Displaying of advertisements (just an example)',
-            },
-            matomo: {
-                description: 'Collecting of visitor statistics',
-            },
-            camera: {
-                description:
-                    'A surveillance camera (just an example for an IMG tag)',
-            },
-            cloudflare: {
-                description: 'Protection against DDoS attacks',
-            },
-            intercom: {
-                description:
-                    'Chat widget & collecting of visitor statistics (just an example)',
-            },
-            mouseflow: {
-                description: 'Real-Time user analytics (just an example)',
-            },
-            googleFonts: {
-                description: 'Web fonts hosted by Google',
+                    'Here you can see and customize the information that we collect about you. ' + 
+                    'Entries marked as "Example" are just for demonstration purposes and are not ' + 
+                    'really used on this website.',
             },
             purposes: {
-                analytics: 'Analytics',
-                security: 'Security',
-                livechat: 'Livechat',
-                advertising: 'Advertising',
-                styling: 'Styling',
-            },
-            acceptSelected: 'Accept selected'
-        },
-        tr: {
-            consentModal: {
-                description:
-                    'Hakkınızda topladığımız bilgileri burada görebilir ve özelleştirebilirsiniz. "Örnek" olarak belirtilenler sadece gösterim amaçlıdır ve gerçekte bu site için kullanılmazlar.',
-            },
-            inlineTracker: {
-                description: 'Satıriçi takip kodu için bir örnek',
-            },
-            externalTracker: {
-                description: 'Dışarıdan çağırılan bir takip kodu için örnek',
-            },
-            adsense: {
-                description: 'Reklam görüntüleme (sadece örnek)',
-            },
-            matomo: {
-                description: 'Ziyaretçi istatistiklerini toplama',
-            },
-            camera: {
-                description:
-                    'İzleme kamerası (IMG tag icin saçma bir örnek daha)',
-            },
-            cloudflare: {
-                description: 'DDoS saldırılarına karşı koruma',
-            },
-            intercom: {
-                description:
-                    'Sohbet aracı ve ziyaretçi istatistiklerini toplama (sadece bir örnek)',
-            },
-            mouseflow: {
-                description:
-                    'Gerçek zamanlı kullanıcı istatistiği (sadece bir örnek)',
-            },
-            googleFonts: {
-                description:
-                    'Google tarafından barındırılan Web Yazıtipi bilgileri',
-            },
-            purposes: {
-                analytics: 'Analitik',
-                security: 'Güvenlik',
-                livechat: 'Canlı Sohbet',
-                advertising: 'Reklam',
-                styling: 'Biçimlendirme',
+                analytics: {
+                    title: 'Analytics'
+                },
+                security: {
+                    title: 'Security'
+                },
+                livechat: {
+                    title: 'Livechat'
+                },
+                advertising: {
+                    title: 'Advertising'
+                },
+                styling: {
+                    title: 'Styling'
+                },
             },
         },
     },
 
-    // This is a list of third-party apps that Klaro will manage for you.
-    apps: [
+    /*
+    Here you specify the third-party services that Klaro will manage for you.
+    */
+    services: [
         {
-            // Each app should have a unique (and short) name.
+
+            /*
+            Each service must have a unique name. Klaro will look for HTML elements with a
+            matching 'data-name' attribute to identify elements that belong to this service.
+            */
             name: 'matomo',
 
-            // If "default" is set to true, the app will be enabled by default
-            // Overwrites global "default" setting.
-            // We recommend leaving this to "false" for apps that collect
-            // personal information.
+            /*
+            If 'default' is set to 'true', the service will be enabled by default. This
+            overrides the global 'default' setting.
+            */
             default: true,
 
-            // The title of you app as listed in the consent modal.
-            title: 'Matomo/Piwik',
-
-            // The purpose(s) of this app. Will be listed on the consent notice.
-            // Do not forget to add translations for all purposes you list here.
+            /*
+            Translations belonging to this service go here. The key `zz` contains default
+            translations that will be used as a fallback if there are no translations
+            defined for a given language.
+            */
+            translations: {
+                zz: {
+                    title: 'Matomo/Piwik'
+                },
+                en: {
+                    description: 'Matomo is a simple, self-hosted analytics service.'
+                },
+                de: {
+                    description: 'Matomo ist ein einfacher, selbstgehosteter Analytics-Service.'
+                },
+            },
+            /*
+            The purpose(s) of this service that will be listed on the consent notice. Do not
+            forget to add translations for all purposes you list here.
+            */
             purposes: ['analytics'],
 
-            // A list of regex expressions or strings giving the names of
-            // cookies set by this app. If the user withdraws consent for a
-            // given app, Klaro will then automatically delete all matching
-            // cookies.
             cookies: [
-                // you can also explicitly provide a path and a domain for
-                // a given cookie. This is necessary if you have apps that
-                // set cookies for a path that is not "/" or a domain that
-                // is not the current domain. If you do not set these values
-                // properly, the cookie can't be deleted by Klaro
-                // (there is no way to access the path or domain of a cookie in JS)
-                [/^_pk_.*$/, '/', 'klaro.kiprotect.com'], //for the production version
-                [/^_pk_.*$/, '/', 'localhost'], //for the local version
+                /*
+                you an either only provide a cookie name or regular expression (regex) or a list
+                consisting of a name or regex, a path and a cookie domain. Providing a path and
+                domain is necessary if you have services that set cookies for a path that is not
+                "/", or a domain that is not the current domain. If you do not set these values
+                properly, the cookie can't be deleted by Klaro, as there is no way to access the
+                path or domain of a cookie in JS. Notice that it is not possible to delete
+                cookies that were set on a third-party domain, or cookies that have the HTTPOnly
+                attribute: https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie#new-
+                cookie_domain
+                */
+
+                /*
+                This rule will match cookies that contain the string '_pk_' and that are set on
+                the path '/' and the domain 'klaro.kiprotect.com'
+                */
+                [/^_pk_.*$/, '/', 'klaro.kiprotect.com'],
+
+                /*
+                Same as above, only for the 'localhost' domain
+                */
+                [/^_pk_.*$/, '/', 'localhost'],
+
+                /*
+                This rule will match all cookies named 'piwik_ignore' that are set on the path
+                '/' on the current domain
+                */
                 'piwik_ignore',
             ],
 
-            // An optional callback function that will be called each time
-            // the consent state for the app changes (true=consented). Passes
-            // the `app` config as the second parameter as well.
-            callback: function(consent, app) {
-                // This is an example callback function.
+            /*
+            You can define an optional callback function that will be called each time the
+            consent state for the given service changes. The consent value will be passed as
+            the first parameter to the function (true=consented). The `service` config will
+            be passed as the second parameter.
+            */
+            callback: function(consent, service) {
                 console.log(
-                    'User consent for app ' + app.name + ': consent=' + consent
+                    'User consent for service ' + service.name + ': consent=' + consent
                 );
             },
 
-            // If "required" is set to true, Klaro will not allow this app to
-            // be disabled by the user.
+            /*
+            If 'required' is set to 'true', Klaro will not allow this service to be disabled
+            by the user. Use this for services that are always required for your website to
+            function (e.g. shopping cart cookies).
+            */
             required: false,
 
-            // If "optOut" is set to true, Klaro will load this app even before
-            // the user gave explicit consent.
-            // We recommend always leaving this "false".
+            /*
+            If 'optOut' is set to 'true', Klaro will load this service even before the user
+            has given explicit consent. We strongly advise against this.
+            */
             optOut: false,
 
-            // If "onlyOnce" is set to true, the app will only be executed
-            // once regardless how often the user toggles it on and off.
+            /*
+            If 'onlyOnce' is set to 'true', the service will only be executed once
+            regardless how often the user toggles it on and off. This is relevant e.g. for
+            tracking scripts that would generate new page view events every time Klaro
+            disables and re-enables them due to a consent change by the user.
+            */
             onlyOnce: true,
         },
-
-        // The apps will appear in the modal in the same order as defined here.
         {
-            name: 'inlineTracker',
-            title: 'Inline Tracker',
-            purposes: ['analytics'],
-            cookies: ['inline-tracker'],
-            optOut: false,
-        },
-        {
-            name: 'externalTracker',
-            title: 'External Tracker',
-            purposes: ['analytics', 'security'],
-            cookies: ['external-tracker'],
-        },
-        {
-            name: 'intercom',
-            title: 'Intercom',
-            default: true,
-            purposes: ['livechat'],
-        },
-        {
-            name: 'mouseflow',
-            title: 'Mouseflow',
-            purposes: ['analytics'],
-        },
-        {
-            name: 'adsense',
-            title: 'Google AdSense',
-            purposes: ['advertising'],
-        },
-        {
-            name: 'camera',
-            title: 'Surveillance Camera',
-            purposes: ['security'],
-        },
-        {
-            name: 'googleFonts',
-            title: 'Google Fonts',
-            purposes: ['styling'],
-        },
-        {
-            name: 'cloudflare',
-            title: 'Cloudflare',
-            purposes: ['security'],
-            required: true,
+            name: 'youtube',
+            /*
+            [no translation for key klaro.annotated-config.services.contextualConsentOnly]
+            */
+            contextualConsentOnly: true,
         },
     ],
+
+    /*
+    You can define an optional callback function that will be called each time the
+    consent state for any given service changes. The consent value will be passed as
+    the first parameter to the function (true=consented). The `service` config will
+    be passed as the second parameter.
+    */
+    callback: function(consent, service) {
+        console.log(
+            'User consent for service ' + service.name + ': consent=' + consent
+        );
+    },
+
 };

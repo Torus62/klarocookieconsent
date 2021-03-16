@@ -2,24 +2,211 @@
 #  Form Field Definitions
 # ===================================
 
-fields:
-  enabled:
-    label: studiobosco.klarocookieconsent::lang.settings.enabled
-    type: switch
-    span: left
-  no_css:
-    label: studiobosco.klarocookieconsent::lang.settings.no_css
-    type: switch
-    span: right
-  consentconfig:
-    label: studiobosco.klarocookieconsent::lang.settings.consentconfig
-    type: codeeditor
-    size: giant
-    language: javascript
-    comment: studiobosco.klarocookieconsent::lang.settings.consentconfig_help
-    commentHtml: true
-  custom_css:
-    label: studiobosco.klarocookieconsent::lang.settings.custom_css
-    type: codeeditor
-    size: giant
-    language: css
+tabs:
+  defaultTab: studiobosco.klarocookieconsent::lang.settings.tab_basic
+  fields:
+    enabled:
+      label: studiobosco.klarocookieconsent::lang.settings.enabled
+      type: switch
+      span: left
+      tap: studiobosco.klarocookieconsent::lang.settings.tab_basic
+    no_css:
+      label: studiobosco.klarocookieconsent::lang.settings.no_css
+      type: switch
+      span: right
+    consentconfig:
+      label: studiobosco.klarocookieconsent::lang.settings.consentconfig
+      type: codeeditor
+      size: giant
+      language: javascript
+      comment: studiobosco.klarocookieconsent::lang.settings.consentconfig_help
+      commentHtml: true
+      tab: studiobosco.klarocookieconsent::lang.settings.tab_basic
+    custom_css:
+      label: studiobosco.klarocookieconsent::lang.settings.custom_css
+      type: codeeditor
+      size: giant
+      language: css
+      tab: studiobosco.klarocookieconsent::lang.settings.tab_basic
+
+    generator_cookie_domain:
+      label: studiobosco.klarocookieconsent::lang.settings.generator_cookie_domain
+      comment: studiobosco.klarocookieconsent::lang.settings.generator_cookie_domain_help
+      span: left
+      tab: studiobosco.klarocookieconsent::lang.settings.tab_generator
+
+    generator_cookie_expires_after_days:
+      label: studiobosco.klarocookieconsent::lang.settings.generator_cookie_expires_after_days
+      type: number
+      min: 0
+      step: 1
+      default: 30
+      span: right
+      tab: studiobosco.klarocookieconsent::lang.settings.tab_generator
+
+    generator_default:
+      label: studiobosco.klarocookieconsent::lang.settings.generator_default
+      type: switch
+      span: left
+      tab: studiobosco.klarocookieconsent::lang.settings.tab_generator
+
+    generator_must_consent:
+      label: studiobosco.klarocookieconsent::lang.settings.generator_must_consent
+      comment: studiobosco.klarocookieconsent::lang.settings.generator_must_consent_help
+      type: switch
+      span: right
+      tab: studiobosco.klarocookieconsent::lang.settings.tab_generator
+
+    generator_accept_all:
+      label: studiobosco.klarocookieconsent::lang.settings.generator_accept_all
+      type: switch
+      span: left
+      tab: studiobosco.klarocookieconsent::lang.settings.tab_generator
+
+    generator_hide_decline_all:
+      label: studiobosco.klarocookieconsent::lang.settings.generator_hide_decline_all
+      type: switch
+      span: left
+      tab: studiobosco.klarocookieconsent::lang.settings.tab_generator
+
+    generator_hide_learn_more:
+      label: studiobosco.klarocookieconsent::lang.settings.generator_hide_learn_more
+      type: switch
+      span: right
+      tab: studiobosco.klarocookieconsent::lang.settings.tab_generator
+
+    generator_privacy_policy_url:
+      label: studiobosco.klarocookieconsent::lang.settings.generator_privacy_policy_url
+      span: left
+      tab: studiobosco.klarocookieconsent::lang.settings.tab_generator
+    
+    generator_consent_notice_description:
+      label: studiobosco.klarocookieconsent::lang.settings.generator_consent_notice_description
+      type: textarea
+      size: tiny
+      span: left
+      tab: studiobosco.klarocookieconsent::lang.settings.tab_generator
+
+    generator_consent_modal_description:
+      label: studiobosco.klarocookieconsent::lang.settings.generator_consent_modal_description
+      type: textarea
+      size: tiny
+      span: right
+      tab: studiobosco.klarocookieconsent::lang.settings.tab_generator
+
+    generator_purposes:
+      label: studiobosco.klarocookieconsent::lang.settings.generator_purposes
+      type: repeater
+      tab: studiobosco.klarocookieconsent::lang.settings.tab_generator
+      prompt: studiobosco.klarocookieconsent::lang.settings.generator_purposes_prompt
+      titleFrom: title
+      style: collapsed
+      form:
+        fields:
+          is_active:
+            label: studiobosco.klarocookieconsent::lang.settings.generator_purpose_is_active
+            type: switch
+          name:
+            label: studiobosco.klarocookieconsent::lang.settings.generator_purpose_name
+            span: left
+            required: true
+          title:
+            label: studiobosco.klarocookieconsent::lang.settings.generator_purpose_title
+            span: right
+            required: true
+
+    generator_services:
+      label: studiobosco.klarocookieconsent::lang.settings.generator_services
+      type: repeater
+      tab: studiobosco.klarocookieconsent::lang.settings.tab_generator
+      prompt: studiobosco.klarocookieconsent::lang.settings.generator_services_prompt
+      titleFrom: title
+      style: collapsed
+      form:
+        fields:
+          is_active:
+            label: studiobosco.klarocookieconsent::lang.settings.generator_service_is_active
+            type: switch
+          name:
+            label: studiobosco.klarocookieconsent::lang.settings.generator_service_name
+            span: left
+            required: true
+          title:
+            label: studiobosco.klarocookieconsent::lang.settings.generator_service_title
+            span: right
+            required: true
+          description:
+            label: studiobosco.klarocookieconsent::lang.settings.generator_service_description
+            type: richeditor
+            toolbarButtons: insertLink|clearFormatting|html
+            size: tiny
+            span: left
+          purposes:
+            label: studiobosco.klarocookieconsent::lang.settings.generator_service_purposes
+            type: checkboxlist
+            span: right
+            required: true
+          default:
+            label: studiobosco.klarocookieconsent::lang.settings.generator_service_default
+            type: switch
+            comment: studiobosco.klarocookieconsent::lang.settings.generator_service_default_help
+            span: left
+          required:
+            label: studiobosco.klarocookieconsent::lang.settings.generator_service_required
+            type: switch
+            comment: studiobosco.klarocookieconsent::lang.settings.generator_service_required_help
+            span: right
+          opt_out:
+            label: studiobosco.klarocookieconsent::lang.settings.generator_service_opt_out
+            type: switch
+            comment: studiobosco.klarocookieconsent::lang.settings.generator_service_opt_out_help
+            span: left
+          only_once:
+            label: studiobosco.klarocookieconsent::lang.settings.generator_service_only_once
+            type: switch
+            comment: studiobosco.klarocookieconsent::lang.settings.generator_service_only_once_help
+            span: right
+          callback:
+            label: studiobosco.klarocookieconsent::lang.settings.generator_service_callback
+            type: codeeditor
+            size: small
+            language: js
+          cookies:
+            label: studiobosco.klarocookieconsent::lang.settings.generator_service_cookies
+            type: repeater
+            prompt: studiobosco.klarocookieconsent::lang.settings.generator_service_cookies_prompt
+            titleFrom: name
+            required: true
+            style: collapsed
+            form:
+              fields:
+                name:
+                  label: studiobosco.klarocookieconsent::lang.settings.generator_service_cookie_name
+                  comment: studiobosco.klarocookieconsent::lang.settings.generator_service_cookie_name_help
+                  span: left
+                  required: true
+                path:
+                  label: studiobosco.klarocookieconsent::lang.settings.generator_service_cookie_path
+                  span: right                  
+                domain:
+                  label: studiobosco.klarocookieconsent::lang.settings.generator_service_cookie_domain
+                  span: left
+    
+    generator_config:
+      label: studiobosco.klarocookieconsent::lang.settings.generator_config
+      type: partial
+      path: $/studiobosco/klarocookieconsent/models/settings/_generator_config.htm
+      tab: studiobosco.klarocookieconsent::lang.settings.tab_generator
+      dependsOn:
+        - generator_cookie_domain
+        - generator_cookie_expires_after_days
+        - generator_default
+        - generator_must_consent
+        - generator_accept_all
+        - generator_hide_decline_all
+        - generator_hide_learn_more
+        - generator_privacy_policy_url
+        - generator_consent_notice_description
+        - generator_consent_modal_description
+        - generator_services
+        - generator_purposes
