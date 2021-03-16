@@ -63,14 +63,14 @@
         [<?= array_get($cookie, 'name'); ?>, '<?= array_get($cookie, 'path', '/'); ?>', '<?= array_get($cookie, 'domain'); ?>'],
 <?php endforeach; ?>
       ],
-<?php if (trim(array_get($cookie, 'callback', ''))) : ?>
+<?php if (trim(array_get($service, 'callback', ''))) : ?>
       callback: function (consent, service) {
-        <?= array_get($cookie, 'callback'); ?>
+        <?= array_get($service, 'callback'); ?>
       },
 <?php endif; ?>
-      required: <?= array_get($cookie, 'required') ? 'true' : 'false'; ?>,
-      optOut: <?= array_get($cookie, 'opt_out') ? 'true' : 'false'; ?>,
-      onlyOnce: <?= array_get($cookie, 'only_once') ? 'true' : 'false'; ?>,
+      required: <?= array_get($service, 'required') ? 'true' : 'false'; ?>,
+      optOut: <?= array_get($service, 'opt_out') ? 'true' : 'false'; ?>,
+      onlyOnce: <?= array_get($service, 'only_once') ? 'true' : 'false'; ?>,
     },
 <?php endif; ?><?php endforeach; ?>
   ]
