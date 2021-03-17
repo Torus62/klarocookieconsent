@@ -1,18 +1,4 @@
-<script type="text/javascript">
-  function applyKlaroConfig(source, target) {
-    const config = document.querySelector(source).innerHTML;
-    document.querySelector(target).value = config;
-    $(document.querySelector(target)).trigger('change');
-  }
-</script>
 <div class="form-group">
-  <button 
-    onclick="applyKlaroConfig('#klaro-generated-config', '#CodeEditor-formConsentconfig-textarea-consentconfig');return false;" 
-    class="btn btn-primary"
-  >
-    <?= Lang::get('studiobosco.klarocookieconsent::lang.settings.generator_apply_config'); ?>
-  </button>
-  <br/><br/>
   <div class="field-codeeditor">
 <pre><code id="klaro-generated-config">var klaroConfig = {
   testing: false,

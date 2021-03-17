@@ -56,6 +56,6 @@
         'generator_service_callback' => 'Callback',
         'generator_service_callback_help' => 'You can define an optional callback function that will be called each time the consent state for the given service changes. The consent value will be available as the `consent` variable (true=consented). The service config is available as the `service` variable.',
         'generator_config' => 'Generated configuration',
-        'generator_apply_config' => 'Apply configuration',
+        'generator_config_help' => 'Copy and paste into Setting > Configuration',
     ],
 ];

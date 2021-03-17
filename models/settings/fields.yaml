@@ -192,6 +192,7 @@ tabs:
     
     generator_config:
       label: studiobosco.klarocookieconsent::lang.settings.generator_config
+      commentAbove: studiobosco.klarocookieconsent::lang.settings.generator_config_help
       type: partial
       path: $/studiobosco/klarocookieconsent/models/settings/_generator_config.htm
       tab: studiobosco.klarocookieconsent::lang.settings.tab_generator

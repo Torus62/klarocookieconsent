@@ -12,7 +12,7 @@
         'consentconfig' => 'Konfiguration',
         'consentconfig_help' => 'Mehr Informationen auf <a href="https://klaro.kiprotect.com/#getting-started" target="klaro">klaro.kiprotect.com</a>',
         'custom_css' => 'Eigenes CSS',
-        'tab_basic' => 'Settings',
+        'tab_basic' => 'Einstellungen',
         'tab_generator' => 'Generator',
         'generator_cookie_domain' => 'Cookie-Domain',
         'generator_cookie_domain_help' => 'Leer lassen, um für Klaro Cookie aktuelle Domain zu nutzen.',
@@ -56,6 +56,6 @@
         'generator_service_callback' => 'Callback',
         'generator_service_callback_help' => 'Falls der Dienst mittels Javascript an- bzw. abgeschalten werden muss. Kann hier ein callback angeben werden. Verfügbare Variablen sind service (object) und consent (boolean).',
         'generator_config' => 'Generierte Konfiguration',
-        'generator_apply_config' => 'Konfiguration übernehmen',
+        'generator_config_help' => 'Kopieren und unter Eistellungen > Konfiguration einfügen',
     ],
 ];

@@ -6,3 +6,4 @@
 1.1.4: uses single line text fields for descriptions in generator
 1.1.5: adds language input for generator
 1.1.6: uses json encoded strings in generator template
+1.1.7: removes non working apply config button
