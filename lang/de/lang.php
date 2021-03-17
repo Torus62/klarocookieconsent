@@ -1,7 +1,7 @@
 <?php return [
     'plugin' => [
         'name' => 'Klaro Cookie Consent',
-        'description' => 'Stell den Cookie-Manager von https://klaro.kiprotect.com/ bereit.',
+        'description' => 'Stellt den Cookie-Manager von https://klaro.kiprotect.com/ bereit.',
     ],
     'settings' => [
         'label' => 'Klaro Cookie Consent',
