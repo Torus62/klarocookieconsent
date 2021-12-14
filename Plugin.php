@@ -19,8 +19,8 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name'        => Lang::get('studiobosco.klarocookieconsent::lang.plugin.name'),
-            'description' => Lang::get('studiobosco.klarocookieconsent::lang.plugin.description'),
+            'name'        => 'studiobosco.klarocookieconsent::lang.plugin.name',
+            'description' => 'studiobosco.klarocookieconsent::lang.plugin.description',
             'author'      => 'Studio Bosco',
             'icon'        => 'icon-cookie',
         ];
@@ -100,10 +100,10 @@ class Plugin extends PluginBase
     {
         return [
             'settings' => [
-                'label' => Lang::get('studiobosco.klarocookieconsent::lang.settings.label'),
-                'description' => Lang::get('studiobosco.klarocookieconsent::lang.settings.description'),
+                'label' => 'studiobosco.klarocookieconsent::lang.settings.label',
+                'description' => 'studiobosco.klarocookieconsent::lang.settings.description',
                 'icon' => 'icon-leaf',
-                'category' => Lang::get('studiobosco.klarocookieconsent::lang.settings.category'),
+                'category' => 'studiobosco.klarocookieconsent::lang.settings.category',
                 'class' => 'StudioBosco\KlaroCookieConsent\Models\Settings',
                 'order' => 100,
             ],
