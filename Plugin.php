@@ -19,8 +19,8 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name'        => Lang::get('studiobosco.klarocookieconsent::lang.plugin.name'),
-            'description' => Lang::get('studiobosco.klarocookieconsent::lang.plugin.description'),
+            'name'        => 'studiobosco.klarocookieconsent::lang.plugin.name',
+            'description' => 'studiobosco.klarocookieconsent::lang.plugin.description',
             'author'      => 'Studio Bosco',
             'icon'        => 'icon-cookie',
         ];
@@ -54,8 +54,8 @@ class Plugin extends PluginBase
 
         $pluginUrl = url('/plugins/studiobosco/klarocookieconsent');
 
-        Block::append('scripts', '<script type="text/javascript">' . $consentConfig . '</script>');
-        Block::append('scripts', '<script type="text/javascript" src="' . $pluginUrl . '/assets/klaro-no-css.js"></script>');
+        Block::append('styles', '<script type="text/javascript">' . $consentConfig . '</script>');
+        Block::append('styles', '<script defer type="text/javascript" src="' . $pluginUrl . '/assets/klaro-no-css.js"></script>');
 
         if (!$noCss) {
             Block::append('styles', '<link rel="stylesheet" type="text/css" href="' . $pluginUrl . '/assets/klaro.css" />');
@@ -100,10 +100,10 @@ class Plugin extends PluginBase
     {
         return [
             'settings' => [
-                'label' => Lang::get('studiobosco.klarocookieconsent::lang.settings.label'),
-                'description' => Lang::get('studiobosco.klarocookieconsent::lang.settings.description'),
+                'label' => 'studiobosco.klarocookieconsent::lang.settings.label',
+                'description' => 'studiobosco.klarocookieconsent::lang.settings.description',
                 'icon' => 'icon-leaf',
-                'category' => Lang::get('studiobosco.klarocookieconsent::lang.settings.category'),
+                'category' => 'studiobosco.klarocookieconsent::lang.settings.category',
                 'class' => 'StudioBosco\KlaroCookieConsent\Models\Settings',
                 'order' => 100,
             ],

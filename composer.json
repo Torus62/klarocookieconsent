@@ -1,7 +1,14 @@
 {
     "name": "studiobosco/klarocookieconsent-plugin",
+    "description": "OctoberCMS Klaro Cookie Consent plugin",
     "type": "october-plugin",
-    "description": "None",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ondrej Brinkel",
+            "email": "ondrej@studiobosco.de"
+        }
+    ],
     "require": {
         "composer/installers": "~1.0"
     }
