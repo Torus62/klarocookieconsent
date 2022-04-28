@@ -1,3 +1,3 @@
-# Klaro Cookie Consent for OctoberCMS
+# Klaro Cookie Consent for WinterCMS
 
-OctoberCMS plugin that integrates the cookie manager from https://klaro.kiprotect.com/.
+WinterCMS plugin that integrates the cookie manager from https://klaro.kiprotect.com/.

@@ -1,7 +1,7 @@
 {
     "name": "studiobosco/klarocookieconsent-plugin",
-    "description": "OctoberCMS Klaro Cookie Consent plugin",
-    "type": "october-plugin",
+    "description": "WinterCMS Klaro Cookie Consent plugin",
+    "type": "winter-plugin",
     "license": "MIT",
     "authors": [
         {
