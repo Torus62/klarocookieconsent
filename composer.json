@@ -1,5 +1,5 @@
 {
-    "name": "studiobosco/klarocookieconsent-plugin",
+    "name": "studiobosco/wn-klarocookieconsent-plugin",
     "description": "WinterCMS Klaro Cookie Consent plugin",
     "type": "winter-plugin",
     "license": "MIT",
