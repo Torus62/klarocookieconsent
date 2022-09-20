@@ -43,10 +43,16 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
-        $enabled = boolval(intval(Settings::get('enabled', 0)));
-        $noCss = boolval(intval(Settings::get('no_css', 0)));
-        $customCss = Settings::get('custom_css');
-        $consentConfig = Settings::get('consentconfig', Settings::getDefaultConsentConfig());
+        // TODO: this causes failure when no DB connection is yet defined. Replace with an environment or DB check
+        $enabled = 0;
+        try {
+            $enabled = boolval(intval(Settings::get('enabled', 0)));
+            $noCss = boolval(intval(Settings::get('no_css', 0)));
+            $customCss = Settings::get('custom_css');
+            $consentConfig = Settings::get('consentconfig', Settings::getDefaultConsentConfig());
+        } catch (\Exception) {
+            return;
+        }
 
         if (!$enabled) {
             return;
